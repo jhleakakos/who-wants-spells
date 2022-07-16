@@ -21,6 +21,8 @@
 go.work
 
 # custom stuffs
-.DS_Store
-.idea
+.DS_Store/
+.idea/
+out/
+data/
 
