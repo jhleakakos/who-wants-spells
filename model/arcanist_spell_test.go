@@ -4,9 +4,6 @@ import (
 	"testing"
 )
 
-func TestLoadData(t *testing.T) {
-}
-
 func TestConvertCSVRowToStruct(t *testing.T) {
 
 	inputValid := []string{

@@ -1,9 +1,40 @@
 package model
 
-import "errors"
+import (
+	"encoding/csv"
+	"errors"
+	"io"
+	"log"
+	"os"
+)
 
-func LoadData() {
-	// csv.NewReader() accepts io.Reader
+func LoadData(file string) *map[string]ArcanistSpell {
+	infile, err := os.Open(file)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer infile.Close()
+
+	data := csv.NewReader(infile)
+	arcanistSpellBook := make(map[string]ArcanistSpell)
+
+	for {
+		row, err := data.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		spell, err := ConvertCSVRowToStruct(row)
+		if err != nil {
+			log.Print(err)
+		}
+		arcanistSpellBook[row[1]] = *spell
+	}
+
+	return &arcanistSpellBook
 }
 
 func ConvertCSVRowToStruct(row []string) (*ArcanistSpell, error) {
