@@ -9,8 +9,6 @@ import (
 	"log"
 )
 
-const file = "./data/arcanist.csv"
-
 func main() {
 	fmt.Println(view.DisplayMenu())
 	fmt.Println()
@@ -20,15 +18,12 @@ func main() {
 		log.Fatal("db connection no good")
 	}
 
-	db.AutoMigrate(&model.ArcanistSpell{})
+	// comment or uncomment these as needed to rebuild db
+	//model.InitializeDB(db)
 
-	arcanistSpellBook := model.LoadArcanistDataFromCSV(file)
-	for key, spell := range *arcanistSpellBook {
-		fmt.Printf("loading %s\n", key)
-		db.Create(&spell)
-	}
-
-	var arcanistSpell model.ArcanistSpell
-	db.First(&arcanistSpell)
-	fmt.Println(arcanistSpell)
+	//var arcanistSpell model.ArcanistSpell
+	//db.First(&arcanistSpell)
+	var arcanistSpells []model.ArcanistSpell
+	db.Find(&arcanistSpells)
+	fmt.Println(arcanistSpells)
 }
