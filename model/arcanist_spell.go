@@ -3,12 +3,42 @@ package model
 import (
 	"encoding/csv"
 	"errors"
+	"gorm.io/gorm"
 	"io"
 	"log"
 	"os"
 )
 
-func LoadData(file string) *map[string]ArcanistSpell {
+type ArcanistSpell struct {
+	gorm.Model
+	Level             string
+	SpellName         string
+	Frequency         string
+	Description       string
+	Range             string
+	CastingTime       string
+	Duration          string
+	AreaOfEffect      string
+	Damage            string
+	SavingThrow       string
+	Reversible        string
+	Components        string
+	SpecialComponents string
+	Class             string
+}
+
+func (s *ArcanistSpell) PrintSpell() string {
+	return s.SpellName
+
+	return ""
+}
+
+func formatDescription(s string) string {
+
+	return ""
+}
+
+func LoadArcanistDataFromCSV(file string) *map[string]ArcanistSpell {
 	infile, err := os.Open(file)
 	if err != nil {
 		log.Fatal(err)
@@ -27,7 +57,7 @@ func LoadData(file string) *map[string]ArcanistSpell {
 			log.Fatal(err)
 		}
 
-		spell, err := ConvertCSVRowToStruct(row)
+		spell, err := convertArcanistCSVRowToStruct(row)
 		if err != nil {
 			log.Print(err)
 		}
@@ -37,7 +67,7 @@ func LoadData(file string) *map[string]ArcanistSpell {
 	return &arcanistSpellBook
 }
 
-func ConvertCSVRowToStruct(row []string) (*ArcanistSpell, error) {
+func convertArcanistCSVRowToStruct(row []string) (*ArcanistSpell, error) {
 
 	if len(row) != 14 {
 		return nil, errors.New("csv row must have 14 fields")

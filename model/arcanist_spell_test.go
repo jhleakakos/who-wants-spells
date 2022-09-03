@@ -23,7 +23,7 @@ func TestConvertCSVRowToStruct(t *testing.T) {
 		"arcanist",
 	}
 
-	got, err := ConvertCSVRowToStruct(inputValid)
+	got, err := convertArcanistCSVRowToStruct(inputValid)
 	if err != nil {
 		t.Errorf("throwing an unexpected error: %s", err)
 	}
@@ -65,7 +65,7 @@ func TestConvertCSVRowToStruct(t *testing.T) {
 		"more bugs",
 	}
 
-	_, err = ConvertCSVRowToStruct(inputInvalidTooFewColumns)
+	_, err = convertArcanistCSVRowToStruct(inputInvalidTooFewColumns)
 	if err == nil {
 		t.Error("expecting error for too few columns")
 	}
@@ -88,7 +88,7 @@ func TestConvertCSVRowToStruct(t *testing.T) {
 		"periwinkle",
 	}
 
-	_, err = ConvertCSVRowToStruct(inputInvalidTooManyColumns)
+	_, err = convertArcanistCSVRowToStruct(inputInvalidTooManyColumns)
 	if err == nil {
 		t.Error("expecting error for too many columns")
 	}
