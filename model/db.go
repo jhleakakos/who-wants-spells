@@ -3,13 +3,17 @@ package model
 import (
 	"fmt"
 	"gorm.io/gorm"
+	"log"
 )
 
 const arcanistFile = "./data/arcanist.csv"
 
 func InitializeDB(db *gorm.DB) {
 
-	db.AutoMigrate(&ArcanistSpell{})
+	err := db.AutoMigrate(&ArcanistSpell{})
+	if err != nil {
+		log.Print("check AutoMigrate()")
+	}
 
 	arcanistSpellBook := LoadArcanistDataFromCSV(arcanistFile)
 	for key, spell := range *arcanistSpellBook {
