@@ -29,13 +29,10 @@ type ArcanistSpell struct {
 
 func (s *ArcanistSpell) PrintSpell() string {
 	return s.SpellName
-
-	return ""
 }
 
 func formatDescription(s string) string {
-
-	return ""
+	return s
 }
 
 func LoadArcanistDataFromCSV(file string) *map[string]ArcanistSpell {
@@ -47,6 +44,9 @@ func LoadArcanistDataFromCSV(file string) *map[string]ArcanistSpell {
 
 	data := csv.NewReader(infile)
 	arcanistSpellBook := make(map[string]ArcanistSpell)
+
+	// skip header row
+	data.Read()
 
 	for {
 		row, err := data.Read()
