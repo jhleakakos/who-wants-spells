@@ -10,7 +10,12 @@ const arcanistFile = "./data/arcanist.csv"
 
 func InitializeDB(db *gorm.DB) {
 
-	err := db.AutoMigrate(&ArcanistSpell{})
+	err := db.Migrator().DropTable(&ArcanistSpell{})
+	if err != nil {
+		log.Print("check DropTable()")
+	}
+
+	err = db.AutoMigrate(&ArcanistSpell{})
 	if err != nil {
 		log.Print("check AutoMigrate()")
 	}
