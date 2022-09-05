@@ -3,6 +3,7 @@ package model
 import (
 	"encoding/csv"
 	"errors"
+	"fmt"
 	"gorm.io/gorm"
 	"io"
 	"log"
@@ -28,7 +29,39 @@ type ArcanistSpell struct {
 }
 
 func (s *ArcanistSpell) PrintSpell() string {
-	return s.SpellName
+
+	sb := fmt.Sprintf(
+		"Spell Name: %s\n"+
+			"Level: %s\n"+
+			"Frequency: %s\n"+
+			"Description: %s\n"+
+			"Range: %s\n"+
+			"Casting Time: %s\n"+
+			"Duration: %s\n"+
+			"Area of Effect: %s\n"+
+			"Damage: %s\n"+
+			"Saving Throw: %s\n"+
+			"Reversible: %s\n"+
+			"Components: %s\n"+
+			"Special Components: %s\n"+
+			"Class: %s\n",
+		s.SpellName,
+		s.Level,
+		s.Frequency,
+		s.Description,
+		s.Range,
+		s.CastingTime,
+		s.Duration,
+		s.AreaOfEffect,
+		s.Damage,
+		s.SavingThrow,
+		s.Reversible,
+		s.Components,
+		s.SpecialComponents,
+		s.Class,
+	)
+
+	return sb
 }
 
 func formatDescription(s string) string {
