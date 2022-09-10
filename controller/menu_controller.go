@@ -49,6 +49,13 @@ func RunMenuLoop() {
 				fmt.Print(DisplayArcanistMenu())
 				fmt.Scanln(&contextMenuInput)
 
+				if contextMenuInput == 1 {
+					var spellLevel string
+					fmt.Print("Level: ")
+					fmt.Scanln(&spellLevel)
+					getArcanistSpellByLevel(spellLevel)
+				}
+
 				if contextMenuInput == 2 {
 					var spellName string
 					fmt.Print("Spell name: ")

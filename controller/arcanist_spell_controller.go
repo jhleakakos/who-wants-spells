@@ -11,6 +11,12 @@ func displayArcanistSpells(spells ...model.ArcanistSpell) {
 	}
 }
 
+func getArcanistSpellByLevel(spellLevel string) {
+	var arcanistSpells []model.ArcanistSpell
+	DB.Where("level = ?", spellLevel).Find(&arcanistSpells)
+	displayArcanistSpells(arcanistSpells...)
+}
+
 func getArcanistSpellByName(spellName string) {
 	var arcanistSpells []model.ArcanistSpell
 	DB.Where("spell_name like ?", fmt.Sprint("%", spellName, "%")).Find(&arcanistSpells)
