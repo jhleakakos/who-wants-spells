@@ -47,6 +47,12 @@ func getArcanistSpellByCastingTime(spellCastingTime string) {
 	displayArcanistSpells(arcanistSpells...)
 }
 
+func getArcanistSpellByDuration(spellDuration string) {
+	var arcanistSpells []model.ArcanistSpell
+	DB.Where("duration like ?", fmt.Sprint("%", spellDuration, "%")).Find(&arcanistSpells)
+	displayArcanistSpells(arcanistSpells...)
+}
+
 func getAllArcanistSpells() {
 	var arcanistSpells []model.ArcanistSpell
 	DB.Find(&arcanistSpells)
