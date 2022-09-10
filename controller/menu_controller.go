@@ -63,6 +63,13 @@ func RunMenuLoop() {
 					getArcanistSpellByName(spellName)
 				}
 
+				if contextMenuInput == 3 {
+					var spellFrequency string
+					fmt.Print("Frequency: ")
+					fmt.Scanln(&spellFrequency)
+					getArcanistSpellByFrequency(spellFrequency)
+				}
+
 				if contextMenuInput == 20 {
 					getAllArcanistSpells()
 				}
