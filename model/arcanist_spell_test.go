@@ -22,11 +22,10 @@ func TestArcanistSpellPrintSpell(t *testing.T) {
 		Class:             "arcanist",
 	}
 
-	inputValid := "" +
+	inputValid := "\n\n\n\n\n" +
 		"Spell Name: chain weevil\n" +
 		"Level: 1\n" +
 		"Frequency: super duper rare\n" +
-		"Description: They eat all your skins, and they never apologize\n" +
 		"Range: 5 ft\n" +
 		"Casting Time: instantaneous\n" +
 		"Duration: 10 rounds\n" +
@@ -36,7 +35,8 @@ func TestArcanistSpellPrintSpell(t *testing.T) {
 		"Reversible: no\n" +
 		"Components: bugs\n" +
 		"Special Components: more bugs\n" +
-		"Class: arcanist\n"
+		"Class: arcanist\n" +
+		"Description:\n\nThey eat all your skins, and they never apologize\n"
 
 	got := testData.PrintSpell()
 	if got != inputValid {

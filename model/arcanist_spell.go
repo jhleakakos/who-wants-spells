@@ -26,10 +26,10 @@ type ArcanistSpell struct {
 func (s *ArcanistSpell) PrintSpell() string {
 
 	sb := fmt.Sprintf(
-		"Spell Name: %s\n"+
+		"\n\n\n\n\n"+
+			"Spell Name: %s\n"+
 			"Level: %s\n"+
 			"Frequency: %s\n"+
-			"Description: %s\n"+
 			"Range: %s\n"+
 			"Casting Time: %s\n"+
 			"Duration: %s\n"+
@@ -39,11 +39,11 @@ func (s *ArcanistSpell) PrintSpell() string {
 			"Reversible: %s\n"+
 			"Components: %s\n"+
 			"Special Components: %s\n"+
-			"Class: %s\n",
+			"Class: %s\n"+
+			"Description:\n\n%s\n",
 		s.SpellName,
 		s.Level,
 		s.Frequency,
-		s.Description,
 		s.Range,
 		s.CastingTime,
 		s.Duration,
@@ -54,6 +54,7 @@ func (s *ArcanistSpell) PrintSpell() string {
 		s.Components,
 		s.SpecialComponents,
 		s.Class,
+		s.Description,
 	)
 
 	return sb
