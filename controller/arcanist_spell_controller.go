@@ -71,6 +71,19 @@ func getArcanistSpellBySavingThrow(spellSavingThrow string) {
 	displayArcanistSpells(arcanistSpells...)
 }
 
+func getArcanistSpellByReversible(spellReversible string) {
+	var searchVal string
+	if spellReversible == "y" {
+		searchVal = "Yes"
+	} else {
+		searchVal = "No"
+	}
+
+	var arcanistSpells []model.ArcanistSpell
+	DB.Where("reversible = ?", searchVal).Find(&arcanistSpells)
+	displayArcanistSpells(arcanistSpells...)
+}
+
 func getAllArcanistSpells() {
 	var arcanistSpells []model.ArcanistSpell
 	DB.Find(&arcanistSpells)

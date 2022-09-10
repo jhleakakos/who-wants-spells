@@ -119,6 +119,19 @@ func RunMenuLoop() {
 					getArcanistSpellBySavingThrow(spellSavingThrow)
 				}
 
+				if contextMenuInput == 11 {
+					var spellReversible string
+					fmt.Print("Reversible (y/n): ")
+					fmt.Scanln(&spellReversible)
+
+					for spellReversible != "y" && spellReversible != "n" {
+						fmt.Print("Reversible (y/n): ")
+						fmt.Scanln(&spellReversible)
+					}
+
+					getArcanistSpellByReversible(spellReversible)
+				}
+
 				if contextMenuInput == 20 {
 					getAllArcanistSpells()
 				}
