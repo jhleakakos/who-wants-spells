@@ -90,6 +90,12 @@ func getArcanistSpellByComponents(spellComponents string) {
 	displayArcanistSpells(arcanistSpells...)
 }
 
+func getArcanistSpellBySpecialComponents(spellSpecialComponents string) {
+	var arcanistSpells []model.ArcanistSpell
+	DB.Where("special_components like ?", fmt.Sprint("%", spellSpecialComponents, "%")).Find(&arcanistSpells)
+	displayArcanistSpells(arcanistSpells...)
+}
+
 func getAllArcanistSpells() {
 	var arcanistSpells []model.ArcanistSpell
 	DB.Find(&arcanistSpells)

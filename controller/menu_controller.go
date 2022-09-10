@@ -139,6 +139,13 @@ func RunMenuLoop() {
 					getArcanistSpellByComponents(spellComponents)
 				}
 
+				if contextMenuInput == 13 {
+					var spellSpecialComponents string
+					fmt.Print("Special components: ")
+					fmt.Scanln(&spellSpecialComponents)
+					getArcanistSpellBySpecialComponents(spellSpecialComponents)
+				}
+
 				if contextMenuInput == 20 {
 					getAllArcanistSpells()
 				}
