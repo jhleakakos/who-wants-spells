@@ -84,6 +84,12 @@ func getArcanistSpellByReversible(spellReversible string) {
 	displayArcanistSpells(arcanistSpells...)
 }
 
+func getArcanistSpellByComponents(spellComponents string) {
+	var arcanistSpells []model.ArcanistSpell
+	DB.Where("components like ?", fmt.Sprint("%", spellComponents, "%")).Find(&arcanistSpells)
+	displayArcanistSpells(arcanistSpells...)
+}
+
 func getAllArcanistSpells() {
 	var arcanistSpells []model.ArcanistSpell
 	DB.Find(&arcanistSpells)

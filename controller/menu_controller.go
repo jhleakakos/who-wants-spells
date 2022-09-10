@@ -81,7 +81,7 @@ func RunMenuLoop() {
 					var spellRange string
 					fmt.Print("Range: ")
 					fmt.Scanln(&spellRange)
-					getArcanistSpellByDescription(spellRange)
+					getArcanistSpellByRange(spellRange)
 				}
 
 				if contextMenuInput == 6 {
@@ -130,6 +130,13 @@ func RunMenuLoop() {
 					}
 
 					getArcanistSpellByReversible(spellReversible)
+				}
+
+				if contextMenuInput == 12 {
+					var spellComponents string
+					fmt.Print("Components: ")
+					fmt.Scanln(&spellComponents)
+					getArcanistSpellByComponents(spellComponents)
 				}
 
 				if contextMenuInput == 20 {
