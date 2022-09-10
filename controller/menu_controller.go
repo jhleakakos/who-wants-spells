@@ -1,16 +1,18 @@
 package controller
 
+import "fmt"
+
 func DisplayMainMenu() string {
-	return "Select choice by number:\n\n" +
+	return "\n\n\n\n\nSelect choice by number:\n\n" +
 		"1  -- Arcanist Spell Book\n" +
 		"2  -- Diviner Spell Book\n\n" +
 		"10 -- Look up spell by name\n" +
 		"0  -- Quit\n\n" +
-		"Select choice:"
+		"Select choice: "
 }
 
 func DisplayArcanistMenu() string {
-	return "Select choice by number:\n\n" +
+	return "\n\n\n\n\nSelect choice by number:\n\n" +
 		"1  -- Level\n" +
 		"2  -- Spell name\n" +
 		"3  -- Frequency\n" +
@@ -24,6 +26,38 @@ func DisplayArcanistMenu() string {
 		"11 -- Reversible\n" +
 		"12 -- Components\n" +
 		"13 -- Special components\n" +
+		"20 -- All spells" +
 		"0  -- Return to main menu\n\n" +
-		"Select choice:"
+		"Select choice: "
+}
+
+func RunMenuLoop() {
+
+	mainMenuInput := -1
+	contextMenuInput := -1
+
+	for {
+		fmt.Print(DisplayMainMenu())
+		fmt.Scanln(&mainMenuInput)
+
+		if mainMenuInput == 0 {
+			break
+		}
+
+		if mainMenuInput == 1 {
+			for {
+				fmt.Print(DisplayArcanistMenu())
+				fmt.Scanln(&contextMenuInput)
+
+				if contextMenuInput == 0 {
+					break
+				}
+			}
+		}
+
+		if mainMenuInput == 2 {
+			fmt.Println("yo diviner")
+		}
+	}
+
 }
