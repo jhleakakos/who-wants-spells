@@ -23,7 +23,7 @@ func InitializeDB() {
 		log.Print("check AutoMigrate()")
 	}
 
-	arcanistSpellBook := model.LoadArcanistDataFromCSV(arcanistFile)
+	arcanistSpellBook := LoadArcanistDataFromCSV(arcanistFile)
 	for key, spell := range *arcanistSpellBook {
 		fmt.Printf("loading %s\n", key)
 		DB.Create(&spell)
