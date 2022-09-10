@@ -105,6 +105,12 @@ func RunMenuLoop() {
 					getArcanistSpellByAreaOfEffect(spellAreaOfEffect)
 				}
 
+				if contextMenuInput == 9 {
+					var spellDamage string
+					fmt.Print("Damage: ")
+					fmt.Scanln(&spellDamage)
+					getArcanistSpellByDamage(spellDamage)
+				}
 				if contextMenuInput == 20 {
 					getAllArcanistSpells()
 				}

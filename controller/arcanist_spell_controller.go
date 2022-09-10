@@ -59,6 +59,12 @@ func getArcanistSpellByAreaOfEffect(spellAreaOfEffect string) {
 	displayArcanistSpells(arcanistSpells...)
 }
 
+func getArcanistSpellByDamage(spellDamage string) {
+	var arcanistSpells []model.ArcanistSpell
+	DB.Where("damage like ?", fmt.Sprint("%", spellDamage, "%")).Find(&arcanistSpells)
+	displayArcanistSpells(arcanistSpells...)
+}
+
 func getAllArcanistSpells() {
 	var arcanistSpells []model.ArcanistSpell
 	DB.Find(&arcanistSpells)
