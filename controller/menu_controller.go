@@ -26,7 +26,7 @@ func DisplayArcanistMenu() string {
 		"11 -- Reversible\n" +
 		"12 -- Components\n" +
 		"13 -- Special components\n" +
-		"20 -- All spells" +
+		"20 -- All spells\n" +
 		"0  -- Return to main menu\n\n" +
 		"Select choice: "
 }
@@ -48,6 +48,17 @@ func RunMenuLoop() {
 			for {
 				fmt.Print(DisplayArcanistMenu())
 				fmt.Scanln(&contextMenuInput)
+
+				if contextMenuInput == 2 {
+					var spellName string
+					fmt.Print("Spell name: ")
+					fmt.Scanln(&spellName)
+					getArcanistSpellByName(spellName)
+				}
+
+				if contextMenuInput == 20 {
+					getAllArcanistSpells()
+				}
 
 				if contextMenuInput == 0 {
 					break

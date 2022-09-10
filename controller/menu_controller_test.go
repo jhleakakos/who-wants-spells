@@ -37,7 +37,7 @@ func TestDisplayArcanistMenu(t *testing.T) {
 		"11 -- Reversible\n" +
 		"12 -- Components\n" +
 		"13 -- Special components\n" +
-		"20 -- All spells" +
+		"20 -- All spells\n" +
 		"0  -- Return to main menu\n\n" +
 		"Select choice: "
 
