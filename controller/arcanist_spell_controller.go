@@ -65,6 +65,12 @@ func getArcanistSpellByDamage(spellDamage string) {
 	displayArcanistSpells(arcanistSpells...)
 }
 
+func getArcanistSpellBySavingThrow(spellSavingThrow string) {
+	var arcanistSpells []model.ArcanistSpell
+	DB.Where("saving_throw like ?", fmt.Sprint("%", spellSavingThrow, "%")).Find(&arcanistSpells)
+	displayArcanistSpells(arcanistSpells...)
+}
+
 func getAllArcanistSpells() {
 	var arcanistSpells []model.ArcanistSpell
 	DB.Find(&arcanistSpells)

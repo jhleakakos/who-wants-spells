@@ -111,6 +111,14 @@ func RunMenuLoop() {
 					fmt.Scanln(&spellDamage)
 					getArcanistSpellByDamage(spellDamage)
 				}
+
+				if contextMenuInput == 10 {
+					var spellSavingThrow string
+					fmt.Print("Saving throw: ")
+					fmt.Scanln(&spellSavingThrow)
+					getArcanistSpellBySavingThrow(spellSavingThrow)
+				}
+
 				if contextMenuInput == 20 {
 					getAllArcanistSpells()
 				}
