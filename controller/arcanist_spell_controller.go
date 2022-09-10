@@ -53,6 +53,12 @@ func getArcanistSpellByDuration(spellDuration string) {
 	displayArcanistSpells(arcanistSpells...)
 }
 
+func getArcanistSpellByAreaOfEffect(spellAreaOfEffect string) {
+	var arcanistSpells []model.ArcanistSpell
+	DB.Where("area_of_effect like ?", fmt.Sprint("%", spellAreaOfEffect, "%")).Find(&arcanistSpells)
+	displayArcanistSpells(arcanistSpells...)
+}
+
 func getAllArcanistSpells() {
 	var arcanistSpells []model.ArcanistSpell
 	DB.Find(&arcanistSpells)

@@ -98,6 +98,13 @@ func RunMenuLoop() {
 					getArcanistSpellByDuration(spellDuration)
 				}
 
+				if contextMenuInput == 8 {
+					var spellAreaOfEffect string
+					fmt.Print("Area of effect: ")
+					fmt.Scanln(&spellAreaOfEffect)
+					getArcanistSpellByAreaOfEffect(spellAreaOfEffect)
+				}
+
 				if contextMenuInput == 20 {
 					getAllArcanistSpells()
 				}
