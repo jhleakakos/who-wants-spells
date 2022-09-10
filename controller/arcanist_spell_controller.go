@@ -35,6 +35,12 @@ func getArcanistSpellByDescription(spellDescription string) {
 	displayArcanistSpells(arcanistSpells...)
 }
 
+func getArcanistSpellByRange(spellRange string) {
+	var arcanistSpells []model.ArcanistSpell
+	DB.Where("Range like ?", fmt.Sprint("%", spellRange, "%")).Find(&arcanistSpells)
+	displayArcanistSpells(arcanistSpells...)
+}
+
 func getAllArcanistSpells() {
 	var arcanistSpells []model.ArcanistSpell
 	DB.Find(&arcanistSpells)

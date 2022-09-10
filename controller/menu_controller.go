@@ -77,6 +77,13 @@ func RunMenuLoop() {
 					getArcanistSpellByDescription(spellDescription)
 				}
 
+				if contextMenuInput == 5 {
+					var spellRange string
+					fmt.Print("Range: ")
+					fmt.Scanln(&spellRange)
+					getArcanistSpellByDescription(spellRange)
+				}
+
 				if contextMenuInput == 20 {
 					getAllArcanistSpells()
 				}
