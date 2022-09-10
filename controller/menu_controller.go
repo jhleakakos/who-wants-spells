@@ -84,6 +84,13 @@ func RunMenuLoop() {
 					getArcanistSpellByDescription(spellRange)
 				}
 
+				if contextMenuInput == 6 {
+					var spellCastingTime string
+					fmt.Print("Casting time: ")
+					fmt.Scanln(&spellCastingTime)
+					getArcanistSpellByCastingTime(spellCastingTime)
+				}
+
 				if contextMenuInput == 20 {
 					getAllArcanistSpells()
 				}
