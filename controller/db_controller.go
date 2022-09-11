@@ -15,24 +15,14 @@ const divinerFile = "./data/diviner.csv"
 
 func InitializeDB() {
 	var err error
-	err = DB.Migrator().DropTable(&model.ArcanistSpell{})
+	err = DB.Migrator().DropTable(&model.ArcanistSpell{}, &model.DivinerSpell{})
 	if err != nil {
 		log.Print("check arcanist DropTable()")
 	}
 
-	err = DB.Migrator().DropTable(&model.DivinerSpell{})
+	err = DB.AutoMigrate(&model.ArcanistSpell{}, &model.DivinerSpell{})
 	if err != nil {
-		log.Print("check diviner DropTable()")
-	}
-
-	err = DB.AutoMigrate(&model.ArcanistSpell{})
-	if err != nil {
-		log.Print("check arcanist AutoMigrate()")
-	}
-
-	err = DB.AutoMigrate(&model.DivinerSpell{})
-	if err != nil {
-		log.Print("check diviner AutoMigrate()")
+		log.Print("check AutoMigrate()")
 	}
 
 	arcanistSpellBook := LoadArcanistDataFromCSV(arcanistFile)
