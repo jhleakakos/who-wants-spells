@@ -111,3 +111,9 @@ func getDivinerSpellByDuration(spellDuration string) {
 	DB.Where("duration like ?", fmt.Sprint("%", spellDuration, "%")).Find(&divinerSpells)
 	displayDivinerSpells(divinerSpells...)
 }
+
+func getDivinerSpellByAreaOfEffect(spellAreaOfEffect string) {
+	var divinerSpells []model.DivinerSpell
+	DB.Where("area_of_effect like ?", fmt.Sprint("%", spellAreaOfEffect, "%")).Find(&divinerSpells)
+	displayDivinerSpells(divinerSpells...)
+}

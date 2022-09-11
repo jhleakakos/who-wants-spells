@@ -229,6 +229,13 @@ func RunMenuLoop() {
 					getDivinerSpellByDuration(spellDuration)
 				}
 
+				if contextMenuInput == 8 {
+					var spellAreaOfEffect string
+					fmt.Print("Area of effect: ")
+					fmt.Scanln(&spellAreaOfEffect)
+					getDivinerSpellByAreaOfEffect(spellAreaOfEffect)
+				}
+
 				if contextMenuInput == 0 {
 					break
 				}
