@@ -187,6 +187,13 @@ func RunMenuLoop() {
 					getDivinerSpellByDivinationSchool(spellDivinationSchool)
 				}
 
+				if contextMenuInput == 2 {
+					var spellTier string
+					fmt.Print("Tier: ")
+					fmt.Scanln(&spellTier)
+					getDivinerSpellByTier(spellTier)
+				}
+
 				if contextMenuInput == 0 {
 					break
 				}
