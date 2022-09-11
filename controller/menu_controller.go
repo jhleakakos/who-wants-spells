@@ -215,6 +215,13 @@ func RunMenuLoop() {
 					getDivinerSpellByRange(spellRange)
 				}
 
+				if contextMenuInput == 6 {
+					var spellCastingTime string
+					fmt.Print("Casting time: ")
+					fmt.Scanln(&spellCastingTime)
+					getDivinerSpellByCastingTime(spellCastingTime)
+				}
+
 				if contextMenuInput == 0 {
 					break
 				}

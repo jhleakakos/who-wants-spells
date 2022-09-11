@@ -99,3 +99,9 @@ func getDivinerSpellByRange(spellRange string) {
 	DB.Where("range like ?", fmt.Sprint("%", spellRange, "%")).Find(&divinerSpells)
 	displayDivinerSpells(divinerSpells...)
 }
+
+func getDivinerSpellByCastingTime(spellCastingTime string) {
+	var divinerSpells []model.DivinerSpell
+	DB.Where("casting_time like ?", fmt.Sprint("%", spellCastingTime, "%")).Find(&divinerSpells)
+	displayDivinerSpells(divinerSpells...)
+}
