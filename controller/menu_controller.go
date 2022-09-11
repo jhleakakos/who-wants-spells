@@ -6,7 +6,6 @@ func DisplayMainMenu() string {
 	return "\n\n\n\n\nSelect choice by number:\n\n" +
 		"1  -- Arcanist Spell Book\n" +
 		"2  -- Diviner Spell Book\n\n" +
-		"10 -- Look up spell by name\n" +
 		"0  -- Quit\n\n" +
 		"Select choice: "
 }
@@ -25,8 +24,8 @@ func DisplayArcanistMenu() string {
 		"10 -- Saving throw\n" +
 		"11 -- Reversible\n" +
 		"12 -- Components\n" +
-		"13 -- Special components\n" +
-		"20 -- All spells\n" +
+		"13 -- Special components\n\n" +
+		"20 -- All arcanist spells\n" +
 		"0  -- Return to main menu\n\n" +
 		"Select choice: "
 }
@@ -43,8 +42,8 @@ func DisplayDivinerMenu() string {
 		"8  -- Area of Effect\n" +
 		"9  -- Damage\n" +
 		"10 -- Saving throw\n" +
-		"11 -- Reversible\n" +
-		"20 -- All spells\n" +
+		"11 -- Reversible\n\n" +
+		"20 -- All diviner spells\n" +
 		"0  -- Return to main menu\n\n" +
 		"Select choice: "
 }
@@ -140,9 +139,6 @@ func RunMenuLoop() {
 
 				if contextMenuInput == 11 {
 					var spellReversible string
-					fmt.Print("Reversible (y/n): ")
-					fmt.Scanln(&spellReversible)
-
 					for spellReversible != "y" && spellReversible != "n" {
 						fmt.Print("Reversible (y/n): ")
 						fmt.Scanln(&spellReversible)
@@ -252,9 +248,6 @@ func RunMenuLoop() {
 
 				if contextMenuInput == 11 {
 					var spellReversible string
-					fmt.Print("Reversible (y/n): ")
-					fmt.Scanln(&spellReversible)
-
 					for spellReversible != "y" && spellReversible != "n" {
 						fmt.Print("Reversible (y/n): ")
 						fmt.Scanln(&spellReversible)
