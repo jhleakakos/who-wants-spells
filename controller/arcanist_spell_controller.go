@@ -45,7 +45,7 @@ func LoadArcanistDataFromCSV(file string) *map[string]model.ArcanistSpell {
 func convertArcanistCSVRowToStruct(row []string) (*model.ArcanistSpell, error) {
 
 	if len(row) != 14 {
-		return nil, errors.New("csv row must have 14 fields")
+		return nil, errors.New("arcanist csv row must have 14 fields")
 	}
 
 	rowStruct := model.ArcanistSpell{
