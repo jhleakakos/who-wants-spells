@@ -208,6 +208,13 @@ func RunMenuLoop() {
 					getDivinerSpellByDescription(spellDescription)
 				}
 
+				if contextMenuInput == 5 {
+					var spellRange string
+					fmt.Print("Range: ")
+					fmt.Scanln(&spellRange)
+					getDivinerSpellByRange(spellRange)
+				}
+
 				if contextMenuInput == 0 {
 					break
 				}
