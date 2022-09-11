@@ -31,10 +31,27 @@ func DisplayArcanistMenu() string {
 		"Select choice: "
 }
 
+func DisplayDivinerMenu() string {
+	return "\n\n\n\n\nSelect choice by number:\n\n" +
+		"1  -- Divination school\n" +
+		"2  -- Tier\n" +
+		"3  -- Name\n" +
+		"4  -- Description\n" +
+		"5  -- Range\n" +
+		"6  -- Casting time\n" +
+		"7  -- Duration\n" +
+		"8  -- Area of Effect\n" +
+		"9  -- Damage\n" +
+		"10 -- Saving throw\n" +
+		"11 -- Reversible\n" +
+		"20 -- All spells\n" +
+		"0  -- Return to main menu\n\n" +
+		"Select choice: "
+}
+
 func RunMenuLoop() {
 
 	mainMenuInput := -1
-	contextMenuInput := -1
 
 	for {
 		fmt.Print(DisplayMainMenu())
@@ -43,6 +60,8 @@ func RunMenuLoop() {
 		if mainMenuInput == 0 {
 			break
 		}
+
+		contextMenuInput := -1
 
 		if mainMenuInput == 1 {
 			for {
@@ -157,7 +176,15 @@ func RunMenuLoop() {
 		}
 
 		if mainMenuInput == 2 {
-			fmt.Println("yo diviner")
+			for {
+				fmt.Print(DisplayDivinerMenu())
+				fmt.Scanln(&contextMenuInput)
+
+				if contextMenuInput == 0 {
+					break
+				}
+
+			}
 		}
 	}
 
