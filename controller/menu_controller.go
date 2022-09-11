@@ -236,6 +236,13 @@ func RunMenuLoop() {
 					getDivinerSpellByAreaOfEffect(spellAreaOfEffect)
 				}
 
+				if contextMenuInput == 9 {
+					var spellDamage string
+					fmt.Print("Damage: ")
+					fmt.Scanln(&spellDamage)
+					getDivinerSpellByDamage(spellDamage)
+				}
+
 				if contextMenuInput == 0 {
 					break
 				}
