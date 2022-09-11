@@ -263,6 +263,10 @@ func RunMenuLoop() {
 					getDivinerSpellByReversible(spellReversible)
 				}
 
+				if contextMenuInput == 20 {
+					getAllDivinerSpells()
+				}
+
 				if contextMenuInput == 0 {
 					break
 				}

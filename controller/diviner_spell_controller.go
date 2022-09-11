@@ -142,3 +142,9 @@ func getDivinerSpellByReversible(spellReversible string) {
 	DB.Where("reversible = ?", searchVal).Find(&divinerSpells)
 	displayDivinerSpells(divinerSpells...)
 }
+
+func getAllDivinerSpells() {
+	var divinerSpells []model.DivinerSpell
+	DB.Find(&divinerSpells)
+	displayDivinerSpells(divinerSpells...)
+}
