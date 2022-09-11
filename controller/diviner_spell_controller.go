@@ -123,3 +123,9 @@ func getDivinerSpellByDamage(spellDamage string) {
 	DB.Where("damage like ?", fmt.Sprint("%", spellDamage, "%")).Find(&divinerSpells)
 	displayDivinerSpells(divinerSpells...)
 }
+
+func getDivinerSpellBySavingThrow(spellSavingThrow string) {
+	var divinerSpells []model.DivinerSpell
+	DB.Where("saving_throw like ?", fmt.Sprint("%", spellSavingThrow, "%")).Find(&divinerSpells)
+	displayDivinerSpells(divinerSpells...)
+}

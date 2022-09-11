@@ -243,6 +243,13 @@ func RunMenuLoop() {
 					getDivinerSpellByDamage(spellDamage)
 				}
 
+				if contextMenuInput == 10 {
+					var spellSavingThrow string
+					fmt.Print("Saving throw: ")
+					fmt.Scanln(&spellSavingThrow)
+					getDivinerSpellBySavingThrow(spellSavingThrow)
+				}
+
 				if contextMenuInput == 0 {
 					break
 				}
