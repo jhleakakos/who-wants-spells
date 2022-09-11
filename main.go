@@ -7,11 +7,27 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"log"
+	"os"
+	"path/filepath"
 )
 
 func init() {
 	var err error
-	controller.DB, err = gorm.Open(sqlite.Open("./spells.sqlite"), &gorm.Config{})
+
+	// this sets the db location in the same directory as
+	// the executable that runs the program
+	//
+	// this means you just need to put the db in the same
+	// directory as the executable when distributing the
+	// app to other systems
+	executable, err := os.Executable()
+	if err != nil {
+		log.Fatal("problem getting executable directory")
+	}
+	controller.ExecutableDir = filepath.Dir(executable)
+	dbLocation := fmt.Sprint(controller.ExecutableDir, "/spells.sqlite")
+
+	controller.DB, err = gorm.Open(sqlite.Open(dbLocation), &gorm.Config{})
 	if err != nil {
 		log.Fatal("db connection no good")
 	}
@@ -24,5 +40,4 @@ func main() {
 	//controller.InitializeDB()
 
 	controller.RunMenuLoop()
-
 }

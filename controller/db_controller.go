@@ -8,6 +8,7 @@ import (
 )
 
 var DB *gorm.DB
+var ExecutableDir string
 
 const arcanistFile = "./data/arcanist.csv"
 const divinerFile = "./data/diviner.csv"
