@@ -10,6 +10,8 @@ import (
 	"os"
 )
 
+var divinerSpells []model.DivinerSpell
+
 func LoadDivinerDataFromCSV(file string) *map[string]model.DivinerSpell {
 	infile, err := os.Open(file)
 	if err != nil {
@@ -64,87 +66,76 @@ func convertDivinerCSVRowToStruct(row []string) (*model.DivinerSpell, error) {
 	return &rowStruct, nil
 }
 
-func displayDivinerSpells(spells ...model.DivinerSpell) {
-	for _, spell := range spells {
+func displayDivinerSpells() {
+	for _, spell := range divinerSpells {
 		fmt.Println(spell.PrintSpell())
 	}
 }
 
 func getDivinerSpellByDivinationSchool(spellDivinationSchool string) {
-	var divinerSpells []model.DivinerSpell
 	DB.Where("divination_school like ?", fmt.Sprint("%", spellDivinationSchool, "%")).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getDivinerSpellByTier(spellTier string) {
-	var divinerSpells []model.DivinerSpell
 	DB.Where("tier like ?", fmt.Sprint("%", spellTier, "%")).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getDivinerSpellByName(spellName string) {
-	var divinerSpells []model.DivinerSpell
 	DB.Where("name like ?", fmt.Sprint("%", spellName, "%")).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getDivinerSpellByDescription(spellDescription string) {
-	var divinerSpells []model.DivinerSpell
 	DB.Where("description like ?", fmt.Sprint("%", spellDescription, "%")).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getDivinerSpellByRange(spellRange string) {
-	var divinerSpells []model.DivinerSpell
 	DB.Where("range like ?", fmt.Sprint("%", spellRange, "%")).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getDivinerSpellByCastingTime(spellCastingTime string) {
-	var divinerSpells []model.DivinerSpell
 	DB.Where("casting_time like ?", fmt.Sprint("%", spellCastingTime, "%")).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getDivinerSpellByDuration(spellDuration string) {
-	var divinerSpells []model.DivinerSpell
 	DB.Where("duration like ?", fmt.Sprint("%", spellDuration, "%")).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getDivinerSpellByAreaOfEffect(spellAreaOfEffect string) {
-	var divinerSpells []model.DivinerSpell
 	DB.Where("area_of_effect like ?", fmt.Sprint("%", spellAreaOfEffect, "%")).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getDivinerSpellByDamage(spellDamage string) {
-	var divinerSpells []model.DivinerSpell
 	DB.Where("damage like ?", fmt.Sprint("%", spellDamage, "%")).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getDivinerSpellBySavingThrow(spellSavingThrow string) {
-	var divinerSpells []model.DivinerSpell
 	DB.Where("saving_throw like ?", fmt.Sprint("%", spellSavingThrow, "%")).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getDivinerSpellByReversible(spellReversible string) {
 	var searchVal string
 	if spellReversible == "y" {
 		searchVal = "Yes"
-	} else {
+	}
+	if spellReversible == "n" {
 		searchVal = "No"
 	}
 
-	var divinerSpells []model.DivinerSpell
 	DB.Where("reversible = ?", searchVal).Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
 
 func getAllDivinerSpells() {
-	var divinerSpells []model.DivinerSpell
 	DB.Find(&divinerSpells)
-	displayDivinerSpells(divinerSpells...)
+	displayDivinerSpells()
 }
