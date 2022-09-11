@@ -180,6 +180,13 @@ func RunMenuLoop() {
 				fmt.Print(DisplayDivinerMenu())
 				fmt.Scanln(&contextMenuInput)
 
+				if contextMenuInput == 1 {
+					var spellDivinationSchool string
+					fmt.Print("Divination school: ")
+					fmt.Scanln(&spellDivinationSchool)
+					getDivinerSpellByDivinationSchool(spellDivinationSchool)
+				}
+
 				if contextMenuInput == 0 {
 					break
 				}

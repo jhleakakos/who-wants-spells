@@ -3,6 +3,7 @@ package controller
 import (
 	"encoding/csv"
 	"errors"
+	"fmt"
 	"github.com/jhleakakos/who-wants-spells/model"
 	"io"
 	"log"
@@ -61,4 +62,16 @@ func convertDivinerCSVRowToStruct(row []string) (*model.DivinerSpell, error) {
 	}
 
 	return &rowStruct, nil
+}
+
+func displayDivinerSpells(spells ...model.DivinerSpell) {
+	for _, spell := range spells {
+		fmt.Println(spell.PrintSpell())
+	}
+}
+
+func getDivinerSpellByDivinationSchool(spellDivinationSchool string) {
+	var divinerSpells []model.DivinerSpell
+	DB.Where("divination_school like ?", fmt.Sprint("%", spellDivinationSchool, "%")).Find(&divinerSpells)
+	displayDivinerSpells(divinerSpells...)
 }
