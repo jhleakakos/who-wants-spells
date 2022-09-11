@@ -87,3 +87,9 @@ func getDivinerSpellByName(spellName string) {
 	DB.Where("name like ?", fmt.Sprint("%", spellName, "%")).Find(&divinerSpells)
 	displayDivinerSpells(divinerSpells...)
 }
+
+func getDivinerSpellByDescription(spellDescription string) {
+	var divinerSpells []model.DivinerSpell
+	DB.Where("description like ?", fmt.Sprint("%", spellDescription, "%")).Find(&divinerSpells)
+	displayDivinerSpells(divinerSpells...)
+}
