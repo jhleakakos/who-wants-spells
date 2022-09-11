@@ -129,3 +129,16 @@ func getDivinerSpellBySavingThrow(spellSavingThrow string) {
 	DB.Where("saving_throw like ?", fmt.Sprint("%", spellSavingThrow, "%")).Find(&divinerSpells)
 	displayDivinerSpells(divinerSpells...)
 }
+
+func getDivinerSpellByReversible(spellReversible string) {
+	var searchVal string
+	if spellReversible == "y" {
+		searchVal = "Yes"
+	} else {
+		searchVal = "No"
+	}
+
+	var divinerSpells []model.DivinerSpell
+	DB.Where("reversible = ?", searchVal).Find(&divinerSpells)
+	displayDivinerSpells(divinerSpells...)
+}

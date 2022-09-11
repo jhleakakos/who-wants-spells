@@ -250,6 +250,19 @@ func RunMenuLoop() {
 					getDivinerSpellBySavingThrow(spellSavingThrow)
 				}
 
+				if contextMenuInput == 11 {
+					var spellReversible string
+					fmt.Print("Reversible (y/n): ")
+					fmt.Scanln(&spellReversible)
+
+					for spellReversible != "y" && spellReversible != "n" {
+						fmt.Print("Reversible (y/n): ")
+						fmt.Scanln(&spellReversible)
+					}
+
+					getDivinerSpellByReversible(spellReversible)
+				}
+
 				if contextMenuInput == 0 {
 					break
 				}
