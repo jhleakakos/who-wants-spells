@@ -24,7 +24,7 @@ type ArcanistSpell struct {
 	Class             string
 }
 
-const maxLineLength = 85
+const maxArcanistLineLength = 85
 
 func (s *ArcanistSpell) PrintSpell() string {
 
@@ -86,7 +86,7 @@ func (s *ArcanistSpell) formatDescription() string {
 		lenFirstWord := len(newLineSplit[0])
 		lenSecondWord := len(newLineSplit[1])
 
-		if currentLineLength+lenFirstWord <= maxLineLength {
+		if currentLineLength+lenFirstWord <= maxArcanistLineLength {
 			result += newLineSplit[0]
 			result += " "
 			currentLineLength += lenFirstWord + 1
