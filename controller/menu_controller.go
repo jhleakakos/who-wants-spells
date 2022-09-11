@@ -222,6 +222,13 @@ func RunMenuLoop() {
 					getDivinerSpellByCastingTime(spellCastingTime)
 				}
 
+				if contextMenuInput == 7 {
+					var spellDuration string
+					fmt.Print("Duration: ")
+					fmt.Scanln(&spellDuration)
+					getDivinerSpellByDuration(spellDuration)
+				}
+
 				if contextMenuInput == 0 {
 					break
 				}
